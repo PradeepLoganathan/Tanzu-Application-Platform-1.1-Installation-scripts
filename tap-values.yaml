@@ -1,0 +1,69 @@
+profile: full
+
+ceip_policy_disclosed: true 
+
+excluded_packages:
+- learningcenter.tanzu.vmware.com
+
+contour:
+  envoy:
+    service:
+      type: LoadBalancer
+
+# Setup the Cloud Native Runtime Settings 
+cnrs:
+  domain_name: cnr.tap.mytanzudev.com
+  domain_template: "{{.Name}}-{{.Namespace}}.{{.Domain}}"
+
+api_portal:
+    apiPortalServer:
+      namespace: api-portal
+      title: 'Pradeep API Portal'
+
+
+# tap gui
+tap_gui:
+  service_type: ClusterIP
+  ingressEnabled: "true"
+  ingressDomain: "tap.mytanzudev.com"
+  app_config:
+    auth:
+      environment: development
+      providers:
+        github:
+          development:
+            clientId: "f427efec4a67746c06a9"  # you need to get this value from GitHub Developer Settings OAuth2 page
+            clientSecret: "3357ec49659a0e2ba795782c7dda00782832d03e"
+    app:
+      baseUrl: http://tap-gui.tap.mytanzudev.com
+    catalog:
+      locations:
+        - type: url
+          target: https://github.com/asaikali/tap-gui-sample-catalog
+    backend:
+      baseUrl: http://tap-gui.tap.mytanzudev.com
+      cors:
+        origin: http://tap-gui.tap.mytanzudev.com
+
+# setup the build service 
+buildservice:
+  kp_default_repository: "buildservice.azurecr.io/az-build-service"  # Build service images will be stored here, not application images containerzed by TBS
+  kp_default_repository_username: "buildservice" 
+  kp_default_repository_password: "repopassword"
+  tanzunet_username: "username" # creds for tanzu net so that installer can pull images from tanzu net and put them in the defalut repo 
+  tanzunet_password: "password"
+  descriptor_name: "full"
+  enable_automatic_dependency_updates: true
+
+supply_chain: basic
+
+ootb_supply_chain_basic:
+  registry:
+    server: "buildservice.azurecr.io" # TBS will write container images to this OCI registry 
+    repository: "clstrapps"  # contairezed app images will go into this repo 
+  gitops:
+    ssh_secret: ""
+
+  grype:
+  #namespace: "MY-DEV-NAMESPACE" # (optional) Defaults to default namespace.
+  targetImagePullSecret: "registry-credentials"

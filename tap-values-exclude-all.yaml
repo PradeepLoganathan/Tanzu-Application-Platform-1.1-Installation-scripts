@@ -1,0 +1,35 @@
+profile: full
+
+ceip_policy_disclosed: true 
+
+excluded_packages:
+  - accelerator.apps.tanzu.vmware.com
+  - api-portal.tanzu.vmware.com
+  - run.appliveview.tanzu.vmware.com
+  - build.appliveview.tanzu.vmware.com
+  - buildservice.tanzu.vmware.com
+  - cartographer.tanzu.vmware.com
+  - cert-manager.tanzu.vmware.com
+  - cnrs.tanzu.vmware.com
+  - contour.tanzu.vmware.com
+  - controller.conventions.apps.tanzu.vmware.com
+  - developer-conventions.tanzu.vmware.com
+  - fluxcd.source.controller.tanzu.vmware.com
+  - grype.scanning.apps.tanzu.vmware.com
+  - image-policy-webhook.signing.apps.tanzu.vmware.com
+  - image-policy-webhook.signing.run.tanzu.vmware.com
+  - learningcenter.tanzu.vmware.com
+  - workshops.learningcenter.tanzu.vmware.com
+  - metadata-store.apps.tanzu.vmware.com
+  - ootb-delivery-basic.tanzu.vmware.com
+  - ootb-supply-chain-basic.tanzu.vmware.com
+  - ootb-supply-chain-testing-scanning.tanzu.vmware.com
+  - ootb-templates.tanzu.vmware.com
+  - scanning.apps.tanzu.vmware.com
+  - service-bindings.labs.vmware.com
+  - services-toolkit.tanzu.vmware.com
+  - controller.source.apps.tanzu.vmware.com
+  - spring-boot-conventions.tanzu.vmware.com
+  - tap-gui.tanzu.vmware.com
+  - tap-telemetry.tanzu.vmware.com
+  - tekton.tanzu.vmware.com
